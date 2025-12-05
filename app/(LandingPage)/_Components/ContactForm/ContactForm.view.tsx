@@ -168,7 +168,7 @@ export function ContactFormView({
             // Reset animation state when going back to form (shouldn't happen normally)
             setShowExitingForm(false);
             setIsSlideAnimating(false);
-        }
+                }
 
         // Update previous success ref
         previousSuccessRef.current = isSuccess;
@@ -269,9 +269,9 @@ export function ContactFormView({
             >
                 {/* Close Button - Floating above top right corner (Mobile only) */}
                 {isMobile && (
-                    <button
-                        type="button"
-                        onClick={onClose}
+                <button
+                    type="button"
+                    onClick={onClose}
                         className="absolute -top-[50px] w-10 h-10 flex items-center justify-center text-white hover:opacity-70 transition-opacity rounded-full z-10"
                         style={{
                             backgroundColor: '#061B2D',
@@ -323,27 +323,27 @@ export function ContactFormView({
                                 outline: 'none',
                                 border: 'none',
                             }}
-                            aria-label="Close form"
-                        >
-                            <svg
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M18 6L6 18M6 6L18 18"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />
-                            </svg>
-                        </button>
+                    aria-label="Close form"
+                >
+                    <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M18 6L6 18M6 6L18 18"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        />
+                    </svg>
+                </button>
                     )}
 
-                    {/* Content Container - Flex layout for fixed header/CTA and scrollable content */}
+                {/* Content Container - Flex layout for fixed header/CTA and scrollable content */}
                     <div className="p-6 md:p-8 flex flex-col h-full min-h-0 relative overflow-hidden">
                         {/* Exiting Form - Slides out to left with fade */}
                         {showExitingForm && (
@@ -384,7 +384,7 @@ export function ContactFormView({
 
                         {/* Current Form Content */}
                         {!isSuccess && !showExitingForm && (
-                            <div ref={formContentRef} className="flex flex-col h-full min-h-0">
+                        <div ref={formContentRef} className="flex flex-col h-full min-h-0">
                                 <form 
                                     onSubmit={(e) => {
                                         e.preventDefault();
@@ -393,22 +393,22 @@ export function ContactFormView({
                                     }} 
                                     className="flex flex-col h-full min-h-0"
                                 >
-                                    <ContactFormFields
-                                        formData={formData}
-                                        errors={errors}
-                                        touched={touched}
-                                        isSubmitting={isSubmitting}
-                                        onFieldChange={onFieldChange}
-                                        onFieldBlur={onFieldBlur}
-                                        translations={translations}
-                                        errorColor={errorColor}
-                                    />
-                                </form>
-                            </div>
-                        )}
+                                <ContactFormFields
+                                    formData={formData}
+                                    errors={errors}
+                                    touched={touched}
+                                    isSubmitting={isSubmitting}
+                                    onFieldChange={onFieldChange}
+                                    onFieldBlur={onFieldBlur}
+                                    translations={translations}
+                                    errorColor={errorColor}
+                                />
+                            </form>
+                        </div>
+                    )}
 
                         {/* Success Content - Slides in from right with fade */}
-                        {isSuccess && (
+                    {isSuccess && (
                             <div 
                                 ref={successContentRef} 
                                 className="flex flex-col h-full min-h-0"
@@ -465,8 +465,8 @@ export function ContactFormView({
                                         <span>{translations.success.done}</span>
                                     </button>
                                 </div>
-                            </div>
-                        )}
+                        </div>
+                    )}
                     </div>
                 </div>
             </div>

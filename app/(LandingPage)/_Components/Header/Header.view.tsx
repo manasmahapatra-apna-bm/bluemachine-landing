@@ -21,7 +21,7 @@ export function HeaderView({
     return (
         <header className="fixed top-0 left-0 right-0 z-50 px-2 sm:px-3 md:px-6 lg:px-8 pt-2 md:pt-4 pointer-events-none">
             <nav
-                className="liquid-glass mx-auto rounded-full px-3 sm:px-4 md:px-8 flex items-center justify-between pointer-events-auto w-[calc(100%-1rem)] sm:w-[calc(100%-1.5rem)] md:w-[80vw] max-w-full h-16 md:h-[4.5rem]"
+                className="liquid-glass mx-auto rounded-full px-3 sm:px-4 md:px-8 flex items-center justify-between pointer-events-auto w-[calc(100%-1rem)] sm:w-[calc(100%-1.5rem)] md:w-[80vw] lg:w-[90vw] max-w-full h-16 md:h-[4.5rem]"
                 style={{
                     backdropFilter: 'blur(20px)',
                     WebkitBackdropFilter: 'blur(20px)',

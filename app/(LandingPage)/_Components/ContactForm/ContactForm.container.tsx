@@ -266,26 +266,26 @@ export function ContactFormContainer(): React.ReactElement {
          * This ensures the success state remains visible during exit animation
          */
         setTimeout(() => {
-            setFormData({
-                name: '',
-                phone: '',
-                email: '',
-                company: '',
-            });
-            setErrors({
-                name: null,
-                phone: null,
-                email: null,
-                company: null,
-            });
-            setTouched({
-                name: false,
-                phone: false,
-                email: false,
-                company: false,
-            });
-            setIsSubmitting(false);
-            setIsSuccess(false);
+        setFormData({
+            name: '',
+            phone: '',
+            email: '',
+            company: '',
+        });
+        setErrors({
+            name: null,
+            phone: null,
+            email: null,
+            company: null,
+        });
+        setTouched({
+            name: false,
+            phone: false,
+            email: false,
+            company: false,
+        });
+        setIsSubmitting(false);
+        setIsSuccess(false);
         }, 300);
     }, [closeContactForm]);
 
@@ -314,25 +314,25 @@ export function ContactFormContainer(): React.ReactElement {
             // Wait for exit animation to complete before resetting state
             // Exit animation duration is 300ms
             const resetTimeout = setTimeout(() => {
-                setIsSuccess(false);
-                setFormData({
-                    name: '',
-                    phone: '',
-                    email: '',
-                    company: '',
-                });
-                setErrors({
-                    name: null,
-                    phone: null,
-                    email: null,
-                    company: null,
-                });
-                setTouched({
-                    name: false,
-                    phone: false,
-                    email: false,
-                    company: false,
-                });
+            setIsSuccess(false);
+            setFormData({
+                name: '',
+                phone: '',
+                email: '',
+                company: '',
+            });
+            setErrors({
+                name: null,
+                phone: null,
+                email: null,
+                company: null,
+            });
+            setTouched({
+                name: false,
+                phone: false,
+                email: false,
+                company: false,
+            });
             }, 300);
 
             return () => {

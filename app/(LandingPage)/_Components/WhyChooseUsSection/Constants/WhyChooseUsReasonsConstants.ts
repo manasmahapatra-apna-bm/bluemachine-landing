@@ -39,7 +39,7 @@ export const BREAKDOWN_LOADER_DURATION_MS = 5000;
  * Used as a fallback minimum height to prevent layout shifts during expand/collapse
  * Can be tweaked as needed for optimal mobile layout
  */
-export const MOBILE_REASON_BASE_MIN_HEIGHT_PX = 600;
+export const MOBILE_REASON_BASE_MIN_HEIGHT_PX = 800;
 
 /**
  * Complete list of all why choose us reasons with their breakdowns
@@ -59,7 +59,7 @@ export const WHY_CHOOSE_US_REASONS: readonly WhyChooseUsReasonData[] = [
             {
                 reasonBreakdownTitle: 'Multilingual & Dialect Precision',
                 reasonBreakdownDescription: 'The runtime stabilizes code-switching and dialect variations so conversations stay accurate under any linguistic load.',
-                reasonDescriptionImage: '/Images/WhyChooseUsReasonImages/WhyChooseUsReason3.png',
+                reasonDescriptionImage: 'https://storage.googleapis.com/mumbai_apnatime_prod/cloudinary/bluemachines-landing/bm-export_0005_1b.webp',
             },
             {
                 reasonBreakdownTitle: 'Controlled LLM Execution',

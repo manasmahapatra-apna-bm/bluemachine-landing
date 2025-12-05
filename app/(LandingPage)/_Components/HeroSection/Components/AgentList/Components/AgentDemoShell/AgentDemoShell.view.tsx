@@ -182,16 +182,6 @@ export function AgentDemoShellView({
             >
                 {/* Inner Container */}
                 <div className="relative rounded-xl overflow-hidden aspect-video">
-                    {/* Background: Thumbnail or Gradient */}
-                    {!thumbnails.exiting && !thumbnails.current && (
-                        <div
-                            className="absolute inset-0"
-                            style={{
-                                background: 'linear-gradient(135deg, #B2E6D6 0%, #8CC7FF 100%)',
-                            }}
-                        />
-                    )}
-
                     {/* Exiting Thumbnail - slides out to left */}
                     {thumbnails.exiting && (
                         <div
@@ -206,11 +196,11 @@ export function AgentDemoShellView({
                                 willChange: 'transform',
                             }}
                         >
-                            <Image
+                        <Image
                                 src={thumbnails.exiting}
-                                alt={agent.agentDemoCaption}
-                                fill
-                                className="object-cover"
+                            alt={agent.agentDemoCaption}
+                            fill
+                            className="object-cover"
                             />
                         </div>
                     )}
@@ -222,15 +212,11 @@ export function AgentDemoShellView({
                             className="absolute inset-0 z-20"
                             style={{
                                 transform: enteringFinalTransform,
-                                opacity: isAnimating && thumbnails.exiting 
-                                    ? 1 
-                                    : thumbnails.exiting 
-                                    ? 0 
-                                    : 1,
+                                opacity: 1,
                                 transition: isAnimating && thumbnails.exiting
-                                    ? 'transform 850ms cubic-bezier(0.4, 0, 0.2, 1), opacity 850ms cubic-bezier(0.4, 0, 0.2, 1)'
+                                    ? 'transform 850ms cubic-bezier(0.4, 0, 0.2, 1)'
                                     : 'none',
-                                willChange: 'transform, opacity',
+                                willChange: 'transform',
                             }}
                         >
                             <Image

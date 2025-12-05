@@ -44,6 +44,7 @@ export function useCarousel(totalItems: number, itemWidth: number = 150, gap: nu
     /**
      * Simple auto-scroll animation function
      * Continuously scrolls the container horizontally
+     * Resets seamlessly after scrolling through one complete set (since we have 5 duplicates)
      */
     const autoScroll = (): void => {
         if (!containerRef.current || !isCarouselMode) {
@@ -53,8 +54,17 @@ export function useCarousel(totalItems: number, itemWidth: number = 150, gap: nu
         const container = containerRef.current;
         const scrollSpeed = 0.5; // pixels per frame
 
+        // Calculate width of one complete set
+        const oneSetWidth = calculateTotalWidth();
+
         // Increment position continuously
         scrollPositionRef.current += scrollSpeed;
+
+        // Reset position when we've scrolled through one complete set
+        // This creates a seamless loop since we have 5 duplicates
+        if (scrollPositionRef.current >= oneSetWidth) {
+            scrollPositionRef.current = scrollPositionRef.current - oneSetWidth;
+        }
 
         // Apply transform
         container.style.transform = `translateX(-${scrollPositionRef.current}px)`;
