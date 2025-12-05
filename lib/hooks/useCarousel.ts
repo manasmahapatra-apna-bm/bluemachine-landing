@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useScreenSize } from '@/lib/hooks/useScreenSize';
 
 interface UseCarouselReturn {
@@ -13,17 +13,18 @@ interface UseCarouselReturn {
  * 
  * Automatically detects if icons overflow the viewport width and enables
  * smooth horizontal auto-scrolling when needed.
+ * Uses JavaScript animation with seamless reset for truly infinite scrolling.
  */
 export function useCarousel(totalItems: number, itemWidth: number = 150, gap: number = 40): UseCarouselReturn {
     const { width: viewportWidth } = useScreenSize();
     const containerRef = useRef<HTMLDivElement>(null);
     const animationFrameRef = useRef<number | null>(null);
     const scrollPositionRef = useRef<number>(0);
+    const [isCarouselMode, setIsCarouselMode] = useState<boolean>(false);
 
     /**
-     * Calculate total width needed for all items
+     * Calculate total width needed for all items (single set)
      * Includes item width and gaps between items
-     * No container padding when in carousel mode (edge-to-edge)
      */
     const calculateTotalWidth = (): number => {
         const totalItemsWidth = totalItems * itemWidth;
@@ -33,12 +34,16 @@ export function useCarousel(totalItems: number, itemWidth: number = 150, gap: nu
 
     /**
      * Determine if carousel mode is needed based on viewport width
+     * Only calculate after client-side hydration to prevent SSR mismatch
      */
-    const isCarouselMode = viewportWidth > 0 && calculateTotalWidth() > viewportWidth;
+    useEffect(() => {
+        const shouldBeCarouselMode = viewportWidth > 0 && calculateTotalWidth() > viewportWidth;
+        setIsCarouselMode(shouldBeCarouselMode);
+    }, [viewportWidth, totalItems, itemWidth, gap]);
 
     /**
-     * Auto-scroll animation function
-     * Smoothly scrolls the container horizontally in a continuous loop
+     * Simple auto-scroll animation function
+     * Continuously scrolls the container horizontally
      */
     const autoScroll = (): void => {
         if (!containerRef.current || !isCarouselMode) {
@@ -46,19 +51,12 @@ export function useCarousel(totalItems: number, itemWidth: number = 150, gap: nu
         }
 
         const container = containerRef.current;
-        const singleSetWidth = calculateTotalWidth();
         const scrollSpeed = 0.5; // pixels per frame
 
+        // Increment position continuously
         scrollPositionRef.current += scrollSpeed;
 
-        /**
-         * Reset scroll position when it exceeds one set of icons
-         * Since we duplicate icons, this creates a seamless infinite scroll effect
-         */
-        if (scrollPositionRef.current >= singleSetWidth) {
-            scrollPositionRef.current = 0;
-        }
-
+        // Apply transform
         container.style.transform = `translateX(-${scrollPositionRef.current}px)`;
 
         animationFrameRef.current = requestAnimationFrame(autoScroll);

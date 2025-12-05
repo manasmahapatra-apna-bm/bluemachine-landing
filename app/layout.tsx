@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import { Source_Sans_3 } from 'next/font/google';
+import { Outfit } from 'next/font/google';
 import './globals.css';
 
-const sourceSans3 = Source_Sans_3({
+const outfit = Outfit({
     subsets: ['latin'],
     weight: ['400', '500', '600', '700'],
-    variable: '--font-source-sans-3',
+    variable: '--font-outfit',
     display: 'swap',
     preload: true,
 });
@@ -21,8 +21,8 @@ export default function RootLayout({
     children: React.ReactNode;
 }>): React.ReactElement {
     return (
-        <html lang="en" className={sourceSans3.variable}>
-            <body className={sourceSans3.className}>{children}</body>
+        <html lang="en" className={outfit.variable}>
+            <body className={outfit.className}>{children}</body>
         </html>
     );
 }

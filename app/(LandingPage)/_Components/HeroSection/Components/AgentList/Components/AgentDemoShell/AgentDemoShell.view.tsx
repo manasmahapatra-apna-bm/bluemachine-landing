@@ -5,6 +5,7 @@ import type { AgentDemoMapping } from '../../Constants/AgentDemoMappings';
 
 interface AgentDemoShellViewProps {
     agent: AgentDemoMapping;
+    thumbnailUrl: string | null;
     isPlaying: boolean;
     isVideoLoaded: boolean;
     onPlayClick: () => void;
@@ -14,30 +15,43 @@ interface AgentDemoShellViewProps {
 
 export function AgentDemoShellView({
     agent,
+    thumbnailUrl,
     isPlaying,
     isVideoLoaded,
     onPlayClick,
     onVideoLoad,
     onVideoEnd,
 }: AgentDemoShellViewProps): React.ReactElement {
+
     return (
-        <div className="relative w-full max-w-4xl mx-auto">
+        <div className="relative w-[calc(100%+1rem)] md:w-full md:max-w-4xl mx-auto -mx-2 md:mx-auto">
+            {/* Rotating Gradient Border Background - slightly larger than container */}
+            <div
+                className="absolute rounded-xl md:rounded-2xl animate-gradient-rotate -top-[0.03125rem] -left-[0.03125rem] -right-[0.03125rem] -bottom-[0.03125rem] md:-top-[0.15625rem] md:-left-[0.15625rem] md:-right-[0.15625rem] md:-bottom-[0.15625rem]"
+                style={{
+                    zIndex: 1,
+                }}
+            />
+            
             {/* Gradient Border Container */}
             <div
-                className="relative rounded-2xl p-1"
+                className="relative rounded-xl md:rounded-2xl demo-shell-border"
                 style={{
                     background: 'linear-gradient(135deg, #00AA7B 0%, #0090FE 100%)',
+                    zIndex: 2,
                 }}
             >
                 {/* Inner Container */}
                 <div className="relative rounded-xl overflow-hidden aspect-video">
                     {/* Background: Thumbnail or Gradient */}
-                    {agent.agentThumbnailImageURL ? (
+                    {thumbnailUrl ? (
                         <Image
-                            src={agent.agentThumbnailImageURL}
+                            src={thumbnailUrl}
                             alt={agent.agentDemoCaption}
                             fill
                             className="object-cover"
+                            priority
+                            fetchPriority="high"
                         />
                     ) : (
                         <div
@@ -56,7 +70,7 @@ export function AgentDemoShellView({
                         }}
                     />
 
-                    {/* Video Element (lazy loaded) */}
+                    {/* Video Element (loaded on demand, no preloading) */}
                     {isVideoLoaded && (
                         <video
                             key={agent.agentDemoVideoURL}
@@ -67,6 +81,7 @@ export function AgentDemoShellView({
                             onLoadedData={onVideoLoad}
                             onEnded={onVideoEnd}
                             playsInline
+                            preload="none"
                         />
                     )}
 
@@ -78,7 +93,7 @@ export function AgentDemoShellView({
                             className="absolute inset-0 flex flex-col items-center justify-center bg-transparent hover:bg-black/5 transition-colors duration-200 z-30"
                             aria-label={`Play ${agent.agentDemoCaption} demo`}
                         >
-                            <div className="w-16 h-16 flex items-center justify-center mb-6">
+                            <div className="w-16 h-16 flex items-center justify-center">
                                 <Image
                                     src="/SVGs/BMDemoCirclePlay.svg"
                                     alt="Play"
@@ -87,21 +102,7 @@ export function AgentDemoShellView({
                                     className="drop-shadow-lg"
                                 />
                             </div>
-                            
-                            {/* Caption - Centered below play button */}
-                            <div className="text-center">
-                                <p className="font-bold text-[32px] -mb-1" style={{ color: 'rgba(4, 17, 45, 0.6)' }}>{agent.agentDemoCaption}</p>
-                                <p className="font-bold text-[32px]" style={{ color: 'rgba(4, 17, 45, 0.6)' }}>{agent.agentName}</p>
-                            </div>
                         </button>
-                    )}
-
-                    {/* Caption when video is playing */}
-                    {isPlaying && (
-                        <div className="absolute bottom-0 left-0 right-0 p-6 z-40 text-center">
-                            <p className="font-bold text-xl -mb-10" style={{ color: 'rgba(4, 17, 45, 0.6)' }}>{agent.agentDemoCaption}</p>
-                            <p className="font-bold text-lg" style={{ color: 'rgba(4, 17, 45, 0.6)' }}>{agent.agentName}</p>
-                        </div>
                     )}
                 </div>
             </div>

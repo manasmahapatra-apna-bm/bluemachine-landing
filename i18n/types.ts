@@ -9,6 +9,7 @@ export type TranslationKey =
     | 'hero'
     | 'benefits'
     | 'contact'
+    | 'contactForm'
     | 'footer';
 
 export interface AgentInfo {
@@ -18,14 +19,12 @@ export interface AgentInfo {
 
 export type Translations = {
     header: {
-        nav: {
-            home: string;
-            whyChooseUs: string;
-        };
         requestDemo: string;
+        arrow: string;
     };
     heroSection: {
         headline: string;
+        description: string;
         supportingText: string;
         cta: {
             text: string;
@@ -73,6 +72,33 @@ export type Translations = {
         submit: string;
         success: string;
         error: string;
+    };
+    contactForm: {
+        title: string;
+        subtitle: string;
+        fields: {
+            name: string;
+            phone: string;
+            email: string;
+            company: string;
+        };
+        cta: string;
+        ctaSubmitting: string;
+        success: {
+            title: string;
+            message: string;
+            done: string;
+        };
+        errors: {
+            nameRequired: string;
+            nameInvalid: string;
+            phoneRequired: string;
+            phoneInvalid: string;
+            emailRequired: string;
+            emailInvalid: string;
+            companyRequired: string;
+            companyInvalid: string;
+        };
     };
     footer: {
         tagline: string;

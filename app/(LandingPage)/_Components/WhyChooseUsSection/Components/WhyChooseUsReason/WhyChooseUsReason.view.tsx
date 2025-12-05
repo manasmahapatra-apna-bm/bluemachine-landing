@@ -13,6 +13,7 @@ interface WhyChooseUsReasonViewProps {
     toggleBreakdown: (index: number) => void;
     isLoaderActive: boolean;
     currentImagePath: string | null;
+    shouldPrioritizeImage: boolean;
 }
 
 /**
@@ -30,13 +31,14 @@ export function WhyChooseUsReasonView({
     toggleBreakdown,
     isLoaderActive,
     currentImagePath,
+    shouldPrioritizeImage,
 }: WhyChooseUsReasonViewProps): React.ReactElement {
     const isImageOnLeft = reasonData.imageAlignment === 'left';
 
     return (
         <div ref={elementRef} className="w-full py-8 flex justify-center">
             <div
-                className="w-[70vw] max-w-full px-4 sm:px-6 lg:px-8 rounded-lg"
+                className="w-[70vw] md:w-[90vw] xl:w-[80vw] max-w-full px-4 sm:px-6 lg:px-8 rounded-lg lg:rounded-2xl"
                 style={{
                     backgroundColor: 'rgba(255, 255, 255, 0.04)',
                 }}
@@ -54,6 +56,7 @@ export function WhyChooseUsReasonView({
                             <ReasonImageContainer
                                 currentImagePath={currentImagePath}
                                 imageAlignment={reasonData.imageAlignment}
+                                priority={shouldPrioritizeImage}
                             />
                         </div>
                     )}
@@ -103,6 +106,7 @@ export function WhyChooseUsReasonView({
                             <ReasonImageContainer
                                 currentImagePath={currentImagePath}
                                 imageAlignment={reasonData.imageAlignment}
+                                priority={shouldPrioritizeImage}
                             />
                         </div>
                     )}

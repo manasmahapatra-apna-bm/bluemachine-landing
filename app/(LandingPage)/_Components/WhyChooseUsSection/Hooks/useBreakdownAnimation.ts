@@ -38,6 +38,7 @@ export function useBreakdownAnimation(
     /**
      * Manually toggle breakdown expansion
      * Pauses auto-expansion temporarily when user interacts
+     * Implements sequential animation: first close active, then open new
      */
     const toggleBreakdown = (index: number): void => {
         /**
@@ -57,7 +58,7 @@ export function useBreakdownAnimation(
             isPausedRef.current = false;
             
             /**
-             * Resume animation from next breakdown after a short delay
+             * Resume animation from next breakdown after collapse animation completes
              */
             setTimeout(() => {
                 if (isInViewport && !isPausedRef.current) {
@@ -65,40 +66,87 @@ export function useBreakdownAnimation(
                     setActiveBreakdownIndex(nextIndex);
                     setIsLoaderActive(true);
                 }
-            }, 300);
+            }, 500);
         } else {
             /**
-             * Expand clicked breakdown
+             * If there's an active breakdown, close it first, then open the new one
              */
-            setActiveBreakdownIndex(index);
-            setIsLoaderActive(true);
-            
-            /**
-             * Pause auto-expansion temporarily
-             */
-            if (timeoutRef.current) {
-                clearTimeout(timeoutRef.current);
-            }
-            isPausedRef.current = true;
-            
-            /**
-             * Resume auto-expansion after loader completes
-             */
-            timeoutRef.current = setTimeout(() => {
-                isPausedRef.current = false;
+            if (activeBreakdownIndex !== -1) {
+                /**
+                 * First, collapse the currently active breakdown
+                 */
+                setActiveBreakdownIndex(-1);
                 setIsLoaderActive(false);
                 
                 /**
-                 * Move to next breakdown after current loader completes
+                 * Clear any pending timeouts
+                 */
+                if (timeoutRef.current) {
+                    clearTimeout(timeoutRef.current);
+                    timeoutRef.current = null;
+                }
+                isPausedRef.current = true;
+                
+                /**
+                 * Wait for collapse animation to complete (500ms), then expand new breakdown
                  */
                 setTimeout(() => {
-                    if (isInViewport && !isPausedRef.current) {
-                        const nextIndex = (index + 1) % totalBreakdowns;
-                        setActiveBreakdownIndex(nextIndex);
-                        setIsLoaderActive(true);
-                    }
-                }, 300);
-            }, BREAKDOWN_LOADER_DURATION_MS);
+                    setActiveBreakdownIndex(index);
+                    setIsLoaderActive(true);
+                    
+                    /**
+                     * Resume auto-expansion after loader completes
+                     */
+                    timeoutRef.current = setTimeout(() => {
+                        isPausedRef.current = false;
+                        setIsLoaderActive(false);
+                        
+                        /**
+                         * Move to next breakdown after current loader completes
+                         */
+                        setTimeout(() => {
+                            if (isInViewport && !isPausedRef.current) {
+                                const nextIndex = (index + 1) % totalBreakdowns;
+                                setActiveBreakdownIndex(nextIndex);
+                                setIsLoaderActive(true);
+                            }
+                        }, 500);
+                    }, BREAKDOWN_LOADER_DURATION_MS);
+                }, 500); // Wait for collapse animation to complete
+            } else {
+                /**
+                 * No active breakdown, expand clicked breakdown immediately
+                 */
+                setActiveBreakdownIndex(index);
+                setIsLoaderActive(true);
+                
+                /**
+                 * Pause auto-expansion temporarily
+                 */
+                if (timeoutRef.current) {
+                    clearTimeout(timeoutRef.current);
+                }
+                isPausedRef.current = true;
+                
+                /**
+                 * Resume auto-expansion after loader completes
+                 */
+                timeoutRef.current = setTimeout(() => {
+                    isPausedRef.current = false;
+                    setIsLoaderActive(false);
+                    
+                    /**
+                     * Move to next breakdown after current loader completes
+                     */
+                    setTimeout(() => {
+                        if (isInViewport && !isPausedRef.current) {
+                            const nextIndex = (index + 1) % totalBreakdowns;
+                            setActiveBreakdownIndex(nextIndex);
+                            setIsLoaderActive(true);
+                        }
+                    }, 500);
+                }, BREAKDOWN_LOADER_DURATION_MS);
+            }
         }
     };
 
@@ -156,7 +204,7 @@ export function useBreakdownAnimation(
                         setActiveBreakdownIndex(nextIndex);
                         setIsLoaderActive(true);
                     }
-                }, 300);
+                }, 500);
             }
         }, BREAKDOWN_LOADER_DURATION_MS);
 

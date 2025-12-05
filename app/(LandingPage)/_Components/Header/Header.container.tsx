@@ -2,36 +2,25 @@
 
 import { HeaderView } from './Header.view';
 import { getTranslations } from '@/lib/i18n';
-import { scrollToSection } from '../Navigation/Utils/NavigationUtils';
+import { useContactForm } from '../ContactForm';
+import { useHeaderSectionTint } from './Hooks/useHeaderSectionTint';
 
 export function HeaderContainer(): React.ReactElement {
     const translations = getTranslations('en');
+    const { openContactForm } = useContactForm();
+    const isDarkTintActive = useHeaderSectionTint();
 
     const handleRequestDemo = (): void => {
-        // TODO: Implement demo request functionality
-    };
-
-    const handleNavClick = (sectionId: string): void => {
-        // Map Header nav item IDs to actual section IDs
-        const sectionIdMap: Record<string, string> = {
-            'home': 'hero',
-            'whyChooseUs': 'benefits',
-        };
-        
-        const targetSectionId = sectionIdMap[sectionId] || sectionId;
-        scrollToSection(targetSectionId);
+        openContactForm();
     };
 
     return (
         <HeaderView
             logoPath="/SVGs/BMLogo.svg"
-            navItems={[
-                { id: 'home', label: translations.header.nav.home },
-                { id: 'whyChooseUs', label: translations.header.nav.whyChooseUs },
-            ]}
             requestDemoLabel={translations.header.requestDemo}
-            onNavClick={handleNavClick}
+            requestDemoArrow={translations.header.arrow}
             onRequestDemo={handleRequestDemo}
+            isDarkTintActive={isDarkTintActive}
         />
     );
 }

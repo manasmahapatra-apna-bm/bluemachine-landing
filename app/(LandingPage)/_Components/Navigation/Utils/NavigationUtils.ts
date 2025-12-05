@@ -104,11 +104,11 @@ export function scrollToSection(sectionId: string): void {
             /**
              * Fallback to native smooth scroll for older browsers
              */
-            window.scrollTo({
+        window.scrollTo({
                 top: clampedScrollPosition,
-                behavior: 'smooth',
-            });
-        }
+            behavior: 'smooth',
+        });
+    }
     };
 
     /**

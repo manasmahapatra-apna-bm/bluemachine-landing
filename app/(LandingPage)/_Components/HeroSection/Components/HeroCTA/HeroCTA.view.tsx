@@ -23,10 +23,10 @@ export function HeroCTAView({ onClick, text, arrow }: HeroCTAViewProps): React.R
             <div
                 className="absolute rounded-full animate-gradient-rotate"
                 style={{
-                    top: '-1px',
-                    left: '-1px',
-                    right: '-1px',
-                    bottom: '-1px',
+                    top: '-0.0625rem',
+                    left: '-0.0625rem',
+                    right: '-0.0625rem',
+                    bottom: '-0.0625rem',
                     zIndex: 1,
                 }}
             />

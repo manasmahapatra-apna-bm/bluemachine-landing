@@ -8,20 +8,21 @@ import type { ImageAlignment } from '../../../../Constants/WhyChooseUsReasonsCon
 interface ReasonImageContainerViewProps {
     currentImagePath: string | null;
     imageAlignment: ImageAlignment;
+    priority: boolean;
 }
 
 /**
- * Image container component with slide-in/slide-out animation and grayscale filter
+ * Image container component with slide-in/slide-out animation
  * 
  * Displays the current breakdown image with smooth slide animations:
  * - Previous image slides out to the left
  * - New image slides in from the right
  * Both animations happen simultaneously for a seamless transition.
- * Applies grayscale filter to match design requirements.
  */
 export function ReasonImageContainerView({
     currentImagePath,
     imageAlignment,
+    priority,
 }: ReasonImageContainerViewProps): React.ReactElement {
     const [images, setImages] = useState<{ exiting: string | null; current: string | null }>({
         exiting: null,
@@ -81,7 +82,7 @@ export function ReasonImageContainerView({
 
             /**
              * Clean up exiting image after animation completes
-             * Total timeout: 100ms start delay + 700ms animation + 100ms buffer = 900ms
+             * Total timeout: 100ms start delay + 850ms animation + 100ms buffer = 1050ms
              */
             animationTimeoutRef.current = setTimeout(() => {
                 setImages({
@@ -90,7 +91,7 @@ export function ReasonImageContainerView({
                 });
                 setIsAnimating(false);
                 previousPathRef.current = currentImagePath;
-            }, 900);
+            }, 1050);
 
             return () => {
                 clearTimeout(startTimeout);
@@ -123,10 +124,11 @@ export function ReasonImageContainerView({
     /**
      * Determine border radius based on image alignment
      * Left-aligned images get rounded left corners, right-aligned get rounded right corners
+     * Increased radius for desktop mode (lg breakpoint)
      */
     const roundedCornersClass = imageAlignment === 'left' 
-        ? 'rounded-l-lg' 
-        : 'rounded-r-lg';
+        ? 'rounded-l-lg lg:rounded-l-2xl' 
+        : 'rounded-r-lg lg:rounded-r-2xl';
 
     /**
      * Determine slide animation direction based on image alignment
@@ -183,7 +185,7 @@ export function ReasonImageContainerView({
                          * willChange optimizes performance by hinting browser about upcoming changes
                          */
                         transition: isAnimating 
-                            ? 'transform 700ms cubic-bezier(0.4, 0, 0.2, 1)' 
+                            ? 'transform 850ms cubic-bezier(0.4, 0, 0.2, 1)' 
                             : 'none',
                         willChange: 'transform',
                     }}
@@ -193,9 +195,6 @@ export function ReasonImageContainerView({
                         alt="Reason breakdown illustration"
                         fill
                         className="object-cover"
-                        style={{
-                            filter: 'grayscale(100%) brightness(0.8) contrast(1.1)',
-                        }}
                     />
                 </div>
             )}
@@ -217,7 +216,7 @@ export function ReasonImageContainerView({
                          * Uses hardware-accelerated transforms for optimal performance
                          */
                         transition: isAnimating && images.exiting
-                            ? 'transform 700ms cubic-bezier(0.4, 0, 0.2, 1), opacity 700ms cubic-bezier(0.4, 0, 0.2, 1)'
+                            ? 'transform 850ms cubic-bezier(0.4, 0, 0.2, 1), opacity 850ms cubic-bezier(0.4, 0, 0.2, 1)'
                             : 'none',
                         willChange: 'transform, opacity',
                     }}
@@ -227,9 +226,8 @@ export function ReasonImageContainerView({
                         alt="Reason breakdown illustration"
                         fill
                         className="object-cover"
-                        style={{
-                            filter: 'grayscale(100%) brightness(0.8) contrast(1.1)',
-                        }}
+                        priority={priority}
+                        fetchPriority={priority ? 'high' : 'auto'}
                     />
                 </div>
             )}

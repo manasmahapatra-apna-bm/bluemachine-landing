@@ -9,23 +9,24 @@ interface BuilderSectionViewProps {
 export function BuilderSectionView({ heading }: BuilderSectionViewProps): React.ReactElement {
     return (
         <section
-            className="w-full py-16 px-4 sm:px-6 lg:px-8"
+            id="builder"
+            className="w-full py-8 md:py-16 px-4 sm:px-6 lg:px-8"
             style={{ backgroundColor: '#E2EBFC' }}
             aria-label="Builder section"
         >
-            <div className="max-w-[1920px] mx-auto flex flex-col items-center space-y-8">
+            <div className="max-w-[1920px] mx-auto flex flex-col items-center space-y-4 md:space-y-8">
                 {/* Heading */}
-                <h2 className="text-gray-900 font-normal text-center text-[16px] sm:text-[26px]">
+                <h2 className="text-gray-900 font-normal text-center text-[1.25rem] md:text-[26px] leading-tight">
                     {heading}
                 </h2>
 
                 {/* Divider */}
                 <div className="w-full flex justify-center">
                     <div
-                        className="rounded-xl"
+                        className="rounded-xl md:w-[4.875rem] md:h-[0.25rem]"
                         style={{
-                            width: '78px',
-                            height: '4px',
+                            width: '3.5rem',
+                            height: '0.1875rem',
                             background: 'linear-gradient(99deg, #B2E6D6 0.18%, #8CC7FF 100.18%)',
                         }}
                     />

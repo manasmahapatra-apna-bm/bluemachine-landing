@@ -2,6 +2,7 @@
 
 import { FooterView } from './Footer.view';
 import { getTranslations } from '@/lib/i18n';
+import { useContactForm } from '../ContactForm';
 import {
     FOOTER_NAV_LINKS,
     SOCIAL_MEDIA_LINKS,
@@ -10,6 +11,7 @@ import {
 
 export function FooterContainer(): React.ReactElement {
     const translations = getTranslations('en');
+    const { openContactForm } = useContactForm();
 
     /**
      * Handle navigation link clicks
@@ -29,10 +31,10 @@ export function FooterContainer(): React.ReactElement {
 
     /**
      * Handle request demo button click
-     * Placeholder function - ready for actual demo request implementation
+     * Opens contact form modal/bottom sheet
      */
     const handleRequestDemo = (): void => {
-        // TODO: Implement demo request functionality
+        openContactForm();
     };
 
     /**

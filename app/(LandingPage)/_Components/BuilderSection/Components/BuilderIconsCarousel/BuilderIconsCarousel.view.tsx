@@ -15,32 +15,34 @@ export function BuilderIconsCarouselView({
     containerRef,
 }: BuilderIconsCarouselViewProps): React.ReactElement {
     /**
-     * Duplicate icons array for seamless infinite scroll
-     * When in carousel mode, we duplicate the icons to create a continuous loop
+     * Duplicate icons array 5 times for continuous scroll
+     * When in carousel mode, we duplicate the icons 5 times to create a long continuous list
      */
-    const displayIcons = isCarouselMode ? [...icons, ...icons] : icons;
+    const displayIcons = isCarouselMode ? [...icons, ...icons, ...icons, ...icons, ...icons] : icons;
 
     return (
         <div className={`relative overflow-hidden ${isCarouselMode ? 'w-screen -mx-4 sm:-mx-6 lg:-mx-8' : 'w-full'}`}>
             {/* Icons Container */}
             <div
                 ref={containerRef}
-                className={`flex items-center gap-3 ${
+                className={`flex items-center gap-2 md:gap-3 ${
                     isCarouselMode ? 'justify-start pl-4 sm:pl-6 lg:pl-8' : 'justify-center'
                 }`}
+                style={isCarouselMode ? { 
+                    willChange: 'transform',
+                } : undefined}
             >
                 {displayIcons.map((icon, index) => (
                     <div
                         key={`${icon.name}-${index}`}
-                        className="flex-shrink-0 flex items-center justify-center"
-                        style={{ width: '150px', height: '60px' }}
+                        className="flex-shrink-0 flex items-center justify-center w-[6.25rem] h-[2.5rem] md:w-[9.375rem] md:h-[3.75rem]"
                     >
                         <Image
                             src={icon.svgPath}
                             alt={icon.altText}
                             width={90}
                             height={25}
-                            className="object-contain"
+                            className="object-contain w-[3.75rem] md:w-[5.625rem] h-auto"
                         />
                     </div>
                 ))}

@@ -35,116 +35,101 @@ export interface WhyChooseUsReasonData {
 export const BREAKDOWN_LOADER_DURATION_MS = 5000;
 
 /**
+ * Base minimum height for mobile reason components in pixels
+ * Used as a fallback minimum height to prevent layout shifts during expand/collapse
+ * Can be tweaked as needed for optimal mobile layout
+ */
+export const MOBILE_REASON_BASE_MIN_HEIGHT_PX = 600;
+
+/**
  * Complete list of all why choose us reasons with their breakdowns
  * Each reason contains icon, header, image alignment preference, and breakdown items
  */
 export const WHY_CHOOSE_US_REASONS: readonly WhyChooseUsReasonData[] = [
     {
         reasonIcon: '/SVGs/WhyChooseUsIcons/HumanGradeConversation.svg',
-        reasonHeader: 'Human Grade Conversation',
+        reasonHeader: 'AI Orchestration Layer',
         imageAlignment: ImageAlignment.RIGHT,
         reasonBreakdowns: [
             {
-                reasonBreakdownTitle: 'Natural Language Understanding',
-                reasonBreakdownDescription: 'Advanced NLP capabilities that understand context and intent with human-like precision.',
+                reasonBreakdownTitle: 'Deterministic Model Orchestration',
+                reasonBreakdownDescription: 'A hardened control plane coordinates STT → LLM → TTS pipelines in real time for stable, enterprise-grade conversations.',
                 reasonDescriptionImage: '/Images/WhyChooseUsReasonImages/WhyChooseUsReason1.png',
             },
             {
-                reasonBreakdownTitle: 'Contextual Awareness',
-                reasonBreakdownDescription: 'Maintains conversation context across multiple interactions for seamless communication.',
+                reasonBreakdownTitle: 'Multilingual & Dialect Precision',
+                reasonBreakdownDescription: 'The runtime stabilizes code-switching and dialect variations so conversations stay accurate under any linguistic load.',
                 reasonDescriptionImage: '/Images/WhyChooseUsReasonImages/WhyChooseUsReason3.png',
             },
             {
-                reasonBreakdownTitle: 'Emotional Intelligence',
-                reasonBreakdownDescription: 'Recognizes and responds to emotional cues to create more meaningful interactions.',
-                reasonDescriptionImage: '/Images/WhyChooseUsReasonImages/WhyChooseUsReason2.png',
+                reasonBreakdownTitle: 'Controlled LLM Execution',
+                reasonBreakdownDescription: 'Deterministic guardrails constrain LLM outputs into predictable, policy-aligned behavior for regulated industries.',
+                reasonDescriptionImage: 'https://storage.googleapis.com/mumbai_apnatime_prod/cloudinary/bluemachines-landing/bm-export_0005_1c.webp',
             },
         ],
     },
     {
         reasonIcon: '/SVGs/WhyChooseUsIcons/ControlPanel.svg',
-        reasonHeader: 'Blue Machines Control Plane',
+        reasonHeader: 'Enterprise-Grade Reliability & Compliance',
         imageAlignment: ImageAlignment.LEFT,
         reasonBreakdowns: [
             {
-                reasonBreakdownTitle: 'Deterministic control',
-                reasonBreakdownDescription: 'Deterministic control on top of probabilistic LLM behavior.',
+                reasonBreakdownTitle: 'Hot-Swap Disaster Recovery',
+                reasonBreakdownDescription: 'If any model or vendor fails, calls instantly switch to a live backup path with zero interruption',
                 reasonDescriptionImage: '/Images/WhyChooseUsReasonImages/WhyChooseUsReason2.png',
             },
             {
-                reasonBreakdownTitle: 'Parallel deterministic pipelines',
-                reasonBreakdownDescription: 'Execute multiple deterministic workflows simultaneously for enhanced performance.',
-                reasonDescriptionImage: '/Images/WhyChooseUsReasonImages/WhyChooseUsReason4.png',
+                reasonBreakdownTitle: 'Built-In Compliance Guardrails',
+                reasonBreakdownDescription: 'Compliance rules for SEBI, TRAI, IRDAI, FAA, and healthcare are enforced automatically at the runtime level.',
+                reasonDescriptionImage: 'https://storage.googleapis.com/mumbai_apnatime_prod/cloudinary/bluemachines-landing/bm-export_0004_2b.webp',
             },
             {
-                reasonBreakdownTitle: 'Plug-and-play modules',
-                reasonBreakdownDescription: 'Easily integrate and swap components without disrupting existing workflows.',
+                reasonBreakdownTitle: 'Massive Horizontal Scalability',
+                reasonBreakdownDescription: 'Distributed inference and multi-region routing let the system scale to nationwide volumes without performance loss.',
                 reasonDescriptionImage: '/Images/WhyChooseUsReasonImages/WhyChooseUsReason3.png',
-            },
-        ],
-    },
-    {
-        reasonIcon: '/SVGs/WhyChooseUsIcons/EnterpriseReliability.svg',
-        reasonHeader: 'Enterprise Reliability',
-        imageAlignment: ImageAlignment.RIGHT,
-        reasonBreakdowns: [
-            {
-                reasonBreakdownTitle: 'Hot-Swap DR',
-                reasonBreakdownDescription: 'Calls continue seamlessly if any vendor fails.',
-                reasonDescriptionImage: '/Images/WhyChooseUsReasonImages/WhyChooseUsReason3.png',
-            },
-            {
-                reasonBreakdownTitle: 'Full RBAC & encryption',
-                reasonBreakdownDescription: 'Comprehensive role-based access control with end-to-end encryption for maximum security.',
-                reasonDescriptionImage: '/Images/WhyChooseUsReasonImages/WhyChooseUsReason5.png',
-            },
-            {
-                reasonBreakdownTitle: 'Unlimited Scalability',
-                reasonBreakdownDescription: 'Scale your infrastructure without limits to meet growing enterprise demands.',
-                reasonDescriptionImage: '/Images/WhyChooseUsReasonImages/WhyChooseUsReason4.png',
             },
         ],
     },
     {
         reasonIcon: '/SVGs/WhyChooseUsIcons/FastestDeployment.svg',
-        reasonHeader: 'Fastest Deployment Engine',
-        imageAlignment: ImageAlignment.LEFT,
+        reasonHeader: 'Fastest Deployment in the Industry',
+        imageAlignment: ImageAlignment.RIGHT,
         reasonBreakdowns: [
             {
-                reasonBreakdownTitle: 'Rapid Configuration',
-                reasonBreakdownDescription: 'Deploy and configure your voice AI solution in minutes, not weeks.',
-                reasonDescriptionImage: '/Images/WhyChooseUsReasonImages/WhyChooseUsReason4.png',
+                reasonBreakdownTitle: 'Prebuilt Enterprise Connectors',
+                reasonBreakdownDescription: '1,000+ deep enterprise connectors allow systems to integrate in minutes with minimal configuration.',
+                reasonDescriptionImage: 'https://storage.googleapis.com/mumbai_apnatime_prod/cloudinary/bluemachines-landing/bm-export_0003_3a.webp',
             },
             {
-                reasonBreakdownTitle: 'Zero-Downtime Updates',
-                reasonBreakdownDescription: 'Update and deploy new features without interrupting active conversations.',
-                reasonDescriptionImage: '/Images/WhyChooseUsReasonImages/WhyChooseUsReason1.png',
+                reasonBreakdownTitle: 'Auto-Write Custom Integrations',
+                reasonBreakdownDescription: 'Custom integration logic and data mappings are auto-generated, eliminating months of manual engineering work.',
+                reasonDescriptionImage: 'https://storage.googleapis.com/mumbai_apnatime_prod/cloudinary/bluemachines-landing/bm-export_0002_3b.webp',
             },
             {
-                reasonBreakdownTitle: 'Automated Scaling',
-                reasonBreakdownDescription: 'Automatically scale resources based on demand to ensure optimal performance.',
-                reasonDescriptionImage: '/Images/WhyChooseUsReasonImages/WhyChooseUsReason5.png',
+                reasonBreakdownTitle: 'Instant Enterprise Setup',
+                reasonBreakdownDescription: 'Most deployments require only access credentials, enabling teams to go live without heavy IT involvement.',
+                reasonDescriptionImage: 'https://storage.googleapis.com/mumbai_apnatime_prod/cloudinary/bluemachines-landing/bm-export_0001_3c.webp',
             },
         ],
     },
     {
         reasonIcon: '/SVGs/WhyChooseUsIcons/GovernanceLayer.svg',
-        reasonHeader: 'Best-in-Class Eval & Governance Layer',
-        imageAlignment: ImageAlignment.RIGHT,
+        reasonHeader: 'Autonomous Eval & Data Operations Layer',
+        imageAlignment: ImageAlignment.LEFT,
         reasonBreakdowns: [
             {
-                reasonBreakdownTitle: 'Comprehensive Monitoring',
-                reasonBreakdownDescription: 'Real-time monitoring and analytics for complete visibility into system performance.',
-                reasonDescriptionImage: '/Images/WhyChooseUsReasonImages/WhyChooseUsReason5.png',
+                reasonBreakdownTitle: 'Automatic CRM Data Updates',
+                reasonBreakdownDescription: 'The system extracts outcomes from every conversation and writes clean, structured data back into enterprise CRMs.',
+                reasonDescriptionImage: 'https://storage.googleapis.com/mumbai_apnatime_prod/cloudinary/bluemachines-landing/bm-export_0000_4a.webp',
             },
             {
-                reasonBreakdownTitle: 'Compliance Assurance',
-                reasonBreakdownDescription: 'Built-in compliance tools to meet industry regulations and standards.',
+                reasonBreakdownTitle: 'Real-Time Policy Detection',
+                reasonBreakdownDescription: 'Policy violations are identified instantly, logged with full audit trails, and routed to reviewers before they become compliance risks.',
                 reasonDescriptionImage: '/Images/WhyChooseUsReasonImages/WhyChooseUsReason2.png',
             },
             {
-                reasonBreakdownTitle: 'Performance Optimization',
-                reasonBreakdownDescription: 'Continuous evaluation and optimization to maintain peak system performance.',
+                reasonBreakdownTitle: 'Live Compliance Dashboards',
+                reasonBreakdownDescription: 'Operational signals and exceptions are visualized instantly, giving CIOs a live control cockpit for Voice AI operations.',
                 reasonDescriptionImage: '/Images/WhyChooseUsReasonImages/WhyChooseUsReason1.png',
             },
         ],

@@ -6,8 +6,3 @@ export const HEADER_STYLES = {
     HEIGHT: 'h-16',
 } as const;
 
-export const NAVIGATION_ITEMS = [
-    { id: 'home', key: 'home' },
-    { id: 'whyChooseUs', key: 'whyChooseUs' },
-] as const;
-

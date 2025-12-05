@@ -3,81 +3,51 @@
 import Image from 'next/image';
 import RequestDemoButton from './Components/RequestDemoButton';
 
-interface NavItem {
-    id: string;
-    label: string;
-}
-
 interface HeaderViewProps {
     logoPath: string;
-    navItems: NavItem[];
     requestDemoLabel: string;
-    onNavClick: (sectionId: string) => void;
+    requestDemoArrow: string;
     onRequestDemo: () => void;
+    isDarkTintActive: boolean;
 }
 
 export function HeaderView({
     logoPath,
-    navItems,
     requestDemoLabel,
-    onNavClick,
+    requestDemoArrow,
     onRequestDemo,
+    isDarkTintActive,
 }: HeaderViewProps): React.ReactElement {
     return (
-        <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pt-4">
+        <header className="fixed top-0 left-0 right-0 z-50 px-2 sm:px-3 md:px-6 lg:px-8 pt-2 md:pt-4 pointer-events-none">
             <nav
-                className="mx-auto rounded-full px-8 flex items-center justify-between"
+                className="liquid-glass mx-auto rounded-full px-3 sm:px-4 md:px-8 flex items-center justify-between pointer-events-auto w-[calc(100%-1rem)] sm:w-[calc(100%-1.5rem)] md:w-[80vw] max-w-full h-16 md:h-[4.5rem]"
                 style={{
-                    width: '85vw',
-                    height: '72px',
-                    background: 'rgba(255, 255, 255, 0.1)',
-                    backdropFilter: 'blur(32px)',
-                    WebkitBackdropFilter: 'blur(32px)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    backgroundColor: isDarkTintActive 
+                        ? 'rgba(0, 0, 0, 0.25)' 
+                        : 'rgba(255, 255, 255, 0)',
+                    transition: 'background-color 400ms cubic-bezier(0.4, 0, 0.2, 1)',
                 }}
                 aria-label="Main navigation"
             >
-                <div className="flex-shrink-0">
-                    <a
-                        href="#"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            onNavClick('home');
+                <div className="flex-shrink-0 flex items-center">
+                    <Image
+                        src={logoPath}
+                        alt="Blue Machines Logo"
+                        width={186}
+                        height={28}
+                        priority
+                        className="w-auto"
+                        style={{
+                            height: 'clamp(0.75rem, 1.5vw + 0.5rem, 1.75rem)',
                         }}
-                        className="flex items-center"
-                        aria-label="Blue Machines home"
-                    >
-                        <Image
-                            src={logoPath}
-                            alt="Blue Machines Logo"
-                            width={186}
-                            height={28}
-                            priority
-                            className="h-7 w-auto"
-                        />
-                    </a>
+                    />
                 </div>
 
-                <div className="hidden md:flex items-center space-x-8">
-                    {navItems.map((item) => (
-                        <a
-                            key={item.id}
-                            href="#"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                onNavClick(item.id);
-                            }}
-                            className="relative px-4 py-2 rounded-full text-white text-base font-normal transition-all duration-300 ease-in-out group"
-                        >
-                            <span
-                                className="absolute inset-0 rounded-full bg-gray-600/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"
-                            />
-                            <span className="relative z-10">{item.label}</span>
-                        </a>
-                    ))}
-                </div>
-
-                <div className="flex-shrink-0">
-                    <RequestDemoButton onClick={onRequestDemo} label={requestDemoLabel} />
+                <div className="flex-shrink-0 flex items-center mr-2 md:mr-[-1.25rem]">
+                    <RequestDemoButton onClick={onRequestDemo} label={requestDemoLabel} arrow={requestDemoArrow} />
                 </div>
             </nav>
         </header>

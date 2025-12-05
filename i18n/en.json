@@ -1,16 +1,14 @@
 {
     "header": {
-        "nav": {
-            "home": "Home",
-            "whyChooseUs": "Why choose us?"
-        },
-        "requestDemo": "Request a Demo"
+        "requestDemo": "Request Demo",
+        "arrow": "→"
     },
     "heroSection": {
         "headline": "AI Voice. Enterprise-Ready. Deployed. Done.",
+        "description": "Blue Machines combines speech, language, workflow, and memory into a secure, scalable conversational AI. 10M+ minutes logged in production.",
         "supportingText": "10M+ minutes. Logged in production, not prototype.",
         "cta": {
-            "text": "Request a Demo",
+            "text": "Request Demo",
             "arrow": "→"
         }
     },
@@ -95,9 +93,36 @@
         "success": "Thank you! We'll get back to you soon.",
         "error": "Something went wrong. Please try again."
     },
+    "contactForm": {
+        "title": "Get in Touch with Us",
+        "subtitle": "Have questions or need AI solutions? Let us know by filling out the form, and we'll be in touch!",
+        "fields": {
+            "name": "Name",
+            "phone": "Phone Number",
+            "email": "Your Work Email",
+            "company": "Your Company"
+        },
+        "cta": "Request a Demo",
+        "ctaSubmitting": "Submitting...",
+        "success": {
+            "title": "Successfully Submitted",
+            "message": "Our team will contact you as soon as possible.",
+            "done": "Done"
+        },
+        "errors": {
+            "nameRequired": "Name is required",
+            "nameInvalid": "Please enter a valid name",
+            "phoneRequired": "Phone number is required",
+            "phoneInvalid": "Please enter a valid phone number",
+            "emailRequired": "Email is required",
+            "emailInvalid": "Please enter a valid email address",
+            "companyRequired": "Company name is required",
+            "companyInvalid": "Please enter a valid company name"
+        }
+    },
     "footer": {
         "tagline": "We power the most ambitious AI initiatives.",
-        "requestDemo": "Request a Demo",
+        "requestDemo": "Request Demo",
         "nav": {
             "about": "About",
             "privacyPolicy": "Privacy Policy",
