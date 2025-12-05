@@ -1,0 +1,8 @@
+# Icon assets
+# 
+# Best practices:
+# - Favicon: favicon.ico (16x16, 32x32)
+# - Apple touch icon: apple-touch-icon.png (180x180)
+# - Manifest icons: icon-192.png, icon-512.png
+# - Use <link> tags in layout.tsx for favicons
+

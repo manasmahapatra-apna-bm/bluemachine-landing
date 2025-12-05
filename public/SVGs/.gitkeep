@@ -1,0 +1,9 @@
+# SVG assets
+# 
+# Best practices:
+# - Option 1: Import as React components (better optimization, tree-shaking)
+#   import Logo from '@/public/svgs/logo.svg'
+# - Option 2: Serve statically (simpler, but less optimized)
+#   <img src="/svgs/logo.svg" alt="Logo" />
+# - For reusable SVGs, consider creating React components in components/
+

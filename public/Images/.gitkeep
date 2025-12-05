@@ -1,0 +1,8 @@
+# Image assets
+# 
+# Best practices:
+# - Use descriptive filenames: hero-background.jpg, product-feature.png
+# - Optimize images before adding (compress, resize to appropriate dimensions)
+# - Use Next.js Image component for automatic optimization and lazy loading
+# - Example: <Image src="/images/hero.jpg" alt="Hero" width={1920} height={1080} />
+

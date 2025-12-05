@@ -1,0 +1,108 @@
+{
+    "header": {
+        "nav": {
+            "home": "Home",
+            "whyChooseUs": "Why choose us?"
+        },
+        "requestDemo": "Request a Demo"
+    },
+    "heroSection": {
+        "headline": "AI Voice. Enterprise-Ready. Deployed. Done.",
+        "supportingText": "10M+ minutes. Logged in production, not prototype.",
+        "cta": {
+            "text": "Request a Demo",
+            "arrow": "→"
+        }
+    },
+    "builderSection": {
+        "heading": "Built by AI Leaders from the World's Top Institutions"
+    },
+    "investorSection": {
+        "heading": "Backed by World-Class Investors"
+    },
+    "whyChooseUsSection": {
+        "header": "Why Enterprises choose Blue Machines?",
+        "subtitle": "Engineered for enterprises that can't wait, can't fail, and won't compromise"
+    },
+    "agentList": {
+        "title": "Use Cases",
+        "agents": [
+            {
+                "name": "US Insurance",
+                "caption": "Cart Abandonment"
+            },
+            {
+                "name": "Customer Support - Airline",
+                "caption": "Customer Support"
+            },
+            {
+                "name": "Medicine Replenishment - Healthcare",
+                "caption": "Medicine Replenishment"
+            },
+            {
+                "name": "Mutual Fund Sales - BFSI",
+                "caption": "Mutual Fund Sales"
+            },
+            {
+                "name": "Technical Support - Home Appliances",
+                "caption": "Technical Support"
+            },
+            {
+                "name": "Debt Recovery - US BFSI",
+                "caption": "Debt Recovery"
+            }
+        ]
+    },
+    "nav": {
+        "home": "Home",
+        "benefits": "Benefits",
+        "contact": "Contact"
+    },
+    "hero": {
+        "headline": "Welcome to BlueMachine",
+        "subheadline": "Transform your business with cutting-edge solutions designed for the modern world.",
+        "cta": "Get Started"
+    },
+    "benefits": {
+        "title": "Why Choose Us",
+        "subtitle": "Discover the advantages that set us apart",
+        "items": [
+            {
+                "title": "Fast & Reliable",
+                "description": "Lightning-fast performance with 99.9% uptime guarantee. Your business never stops."
+            },
+            {
+                "title": "Secure & Private",
+                "description": "Enterprise-grade security to protect your data and ensure complete privacy."
+            },
+            {
+                "title": "Scalable Solutions",
+                "description": "Grow without limits. Our platform scales seamlessly with your business needs."
+            },
+            {
+                "title": "Expert Support",
+                "description": "24/7 dedicated support from our team of experts ready to help you succeed."
+            }
+        ]
+    },
+    "contact": {
+        "title": "Get in Touch",
+        "subtitle": "Ready to get started? We'd love to hear from you.",
+        "name": "Name",
+        "email": "Email",
+        "message": "Message",
+        "submit": "Send Message",
+        "success": "Thank you! We'll get back to you soon.",
+        "error": "Something went wrong. Please try again."
+    },
+    "footer": {
+        "tagline": "We power the most ambitious AI initiatives.",
+        "requestDemo": "Request a Demo",
+        "nav": {
+            "about": "About",
+            "privacyPolicy": "Privacy Policy",
+            "joinTeam": "Join the team"
+        },
+        "copyright": "© All right reserved"
+    }
+}

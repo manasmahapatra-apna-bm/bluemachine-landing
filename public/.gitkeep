@@ -1,0 +1,12 @@
+# Public assets directory
+# 
+# Structure:
+# - Images/     : Photos, illustrations, hero images (use Next.js Image component)
+# - Icons/      : Icon files (PNG, ICO, etc.)
+# - SVGs/       : SVG files (can be imported as components or served statically)
+# - Fonts/      : Custom font files (if not using Next.js font optimization)
+#
+# Usage:
+# - Images: Use Next.js Image component: <Image src="/Images/hero.jpg" ... />
+# - SVGs: Import as React components for better optimization or use <img src="/SVGs/logo.svg" />
+# - Icons: Use <link rel="icon" href="/Icons/favicon.ico" /> or <img src="/Icons/icon.png" />

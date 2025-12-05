@@ -1,0 +1,9 @@
+# Custom font files
+# 
+# Note: Currently using Geist font via npm package with Next.js font optimization
+# This folder is for any custom fonts not available via npm/CDN
+# 
+# Best practices:
+# - Use Next.js font optimization when possible (already configured)
+# - If custom fonts needed, use next/font/local in layout.tsx
+
