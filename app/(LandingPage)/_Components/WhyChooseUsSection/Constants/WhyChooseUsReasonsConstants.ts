@@ -54,7 +54,7 @@ export const WHY_CHOOSE_US_REASONS: readonly WhyChooseUsReasonData[] = [
             {
                 reasonBreakdownTitle: 'Deterministic Model Orchestration',
                 reasonBreakdownDescription: 'A hardened control plane coordinates STT → LLM → TTS pipelines in real time for stable, enterprise-grade conversations.',
-                reasonDescriptionImage: '/Images/WhyChooseUsReasonImages/WhyChooseUsReason1.png',
+                reasonDescriptionImage: 'https://storage.googleapis.com/mumbai_apnatime_prod/cloudinary/bluemachines-landing/bm_0011_1a.webp',
             },
             {
                 reasonBreakdownTitle: 'Multilingual & Dialect Precision',
@@ -76,7 +76,7 @@ export const WHY_CHOOSE_US_REASONS: readonly WhyChooseUsReasonData[] = [
             {
                 reasonBreakdownTitle: 'Hot-Swap Disaster Recovery',
                 reasonBreakdownDescription: 'If any model or vendor fails, calls instantly switch to a live backup path with zero interruption',
-                reasonDescriptionImage: '/Images/WhyChooseUsReasonImages/WhyChooseUsReason2.png',
+                reasonDescriptionImage: 'https://storage.googleapis.com/mumbai_apnatime_prod/cloudinary/bluemachines-landing/bm_0008_2a.webp',
             },
             {
                 reasonBreakdownTitle: 'Built-In Compliance Guardrails',
@@ -86,7 +86,7 @@ export const WHY_CHOOSE_US_REASONS: readonly WhyChooseUsReasonData[] = [
             {
                 reasonBreakdownTitle: 'Massive Horizontal Scalability',
                 reasonBreakdownDescription: 'Distributed inference and multi-region routing let the system scale to nationwide volumes without performance loss.',
-                reasonDescriptionImage: '/Images/WhyChooseUsReasonImages/WhyChooseUsReason3.png',
+                reasonDescriptionImage: 'https://storage.googleapis.com/mumbai_apnatime_prod/cloudinary/bluemachines-landing/bm_0006_2c.webp',
             },
         ],
     },
@@ -125,12 +125,12 @@ export const WHY_CHOOSE_US_REASONS: readonly WhyChooseUsReasonData[] = [
             {
                 reasonBreakdownTitle: 'Real-Time Policy Detection',
                 reasonBreakdownDescription: 'Policy violations are identified instantly, logged with full audit trails, and routed to reviewers before they become compliance risks.',
-                reasonDescriptionImage: '/Images/WhyChooseUsReasonImages/WhyChooseUsReason2.png',
+                reasonDescriptionImage: 'https://storage.googleapis.com/mumbai_apnatime_prod/cloudinary/bluemachines-landing/bm_0001_4b.webp',
             },
             {
                 reasonBreakdownTitle: 'Live Compliance Dashboards',
                 reasonBreakdownDescription: 'Operational signals and exceptions are visualized instantly, giving CIOs a live control cockpit for Voice AI operations.',
-                reasonDescriptionImage: '/Images/WhyChooseUsReasonImages/WhyChooseUsReason1.png',
+                reasonDescriptionImage: 'https://storage.googleapis.com/mumbai_apnatime_prod/cloudinary/bluemachines-landing/bm_0000_4c.webp',
             },
         ],
     },

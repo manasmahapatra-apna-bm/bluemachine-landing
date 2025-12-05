@@ -11,7 +11,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-    title: 'BlueMachine Landing',
+    title: 'Blue Machines',
     description: 'Transform your business with cutting-edge solutions',
 };
 
