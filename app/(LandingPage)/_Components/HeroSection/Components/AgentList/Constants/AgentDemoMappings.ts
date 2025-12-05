@@ -9,8 +9,8 @@ export interface AgentDemoMapping {
 export const AGENT_DEMO_MAPPINGS: AgentDemoMapping[] = [
     {
         agentName: 'US Insurance',
-        agentThumbnailDesktopImageURL: null,
-        agentThumbnailMobileImageURL: null,
+        agentThumbnailDesktopImageURL: "https://storage.googleapis.com/mumbai_apnatime_prod/cloudinary/bluemachines-landing/US%20insurance.png",
+        agentThumbnailMobileImageURL: "https://storage.googleapis.com/mumbai_apnatime_prod/cloudinary/bluemachines-landing/US%20insurance.png",
         agentDemoVideoURL: 'https://descriptusercontent.com/published/9bfcb4ad-88e6-4cbc-881b-d2f34f2b42b0/original.mp4',
         agentDemoCaption: 'Cart Abandonment',
     },
