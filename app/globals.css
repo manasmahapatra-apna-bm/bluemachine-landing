@@ -105,6 +105,16 @@ body {
     outline-offset: 2px;
 }
 
+/* Override focus-visible for Hero CTA button */
+.hero-cta-button:focus-visible,
+.hero-cta-button:focus,
+.hero-cta-button:active,
+.hero-cta-button:hover {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
 /* Skip to content link */
 .skip-to-content {
     position: absolute;

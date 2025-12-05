@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { ContactFormFields } from './Components/ContactFormFields';
+import { triggerHapticFeedback } from '@/lib/utils/hapticFeedback';
 
 interface ContactFormViewProps {
     isOpen: boolean;
@@ -452,7 +453,10 @@ export function ContactFormView({
                                 <div className="flex-shrink-0 mt-6 md:mt-8">
                                     <button
                                         type="button"
-                                        onClick={onClose}
+                                        onClick={() => {
+                                            triggerHapticFeedback();
+                                            onClose();
+                                        }}
                                         className="w-full px-6 py-3 md:py-4 rounded-full text-white font-medium text-base md:text-lg flex items-center justify-center gap-2 transition-all duration-200 hover:opacity-90 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
                                         style={{
                                             backgroundColor: '#0090FE',

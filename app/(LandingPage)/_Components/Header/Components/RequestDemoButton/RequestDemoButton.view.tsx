@@ -1,5 +1,7 @@
 'use client';
 
+import { triggerHapticFeedback } from '@/lib/utils/hapticFeedback';
+
 interface RequestDemoButtonViewProps {
     onClick: () => void;
     label: string;
@@ -33,17 +35,34 @@ export function RequestDemoButtonView({ onClick, label, arrow }: RequestDemoButt
                 <div className="absolute inset-0 bg-white/90 backdrop-blur-sm rounded-full" />
                 
                 {/* Button Content */}
-                <button
-                    type="button"
-                    onClick={onClick}
-                    className="relative z-10 text-gray-900 font-medium flex items-center gap-1.5 md:gap-2 h-full px-3 md:px-6 transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
+                <div
+                    onClick={() => {
+                        triggerHapticFeedback();
+                        onClick();
+                    }}
+                    className="relative z-10 text-gray-900 font-medium flex items-center gap-1.5 md:gap-2 h-full px-3 md:px-6 transition-all duration-200 hover:scale-105 cursor-pointer"
+                    style={{
+                        outline: 'none',
+                        border: 'none',
+                        boxShadow: 'none',
+                        background: 'transparent',
+                    }}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            triggerHapticFeedback();
+                            onClick();
+                        }
+                    }}
                     aria-label="Request a demo"
                 >
                     <span className="text-[14px] md:text-[16px]">
                         {label}
                     </span>
                     <span className="text-base md:text-lg">{arrow}</span>
-                </button>
+                </div>
             </div>
         </div>
     );

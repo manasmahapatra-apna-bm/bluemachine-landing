@@ -1,5 +1,7 @@
 'use client';
 
+import { triggerHapticFeedback } from '@/lib/utils/hapticFeedback';
+
 interface HeroCTAViewProps {
     onClick: () => void;
     text: string;
@@ -8,7 +10,7 @@ interface HeroCTAViewProps {
 
 export function HeroCTAView({ onClick, text, arrow }: HeroCTAViewProps): React.ReactElement {
     return (
-        <div className="relative inline-block">
+        <div className="relative inline-block overflow-hidden rounded-full">
             {/* Background Glow */}
             <div
                 className="absolute inset-0 rounded-full blur-xl opacity-60"
@@ -28,6 +30,7 @@ export function HeroCTAView({ onClick, text, arrow }: HeroCTAViewProps): React.R
                     right: '-0.0625rem',
                     bottom: '-0.0625rem',
                     zIndex: 1,
+                    overflow: 'hidden',
                 }}
             />
             
@@ -37,21 +40,41 @@ export function HeroCTAView({ onClick, text, arrow }: HeroCTAViewProps): React.R
                 style={{
                     background: 'linear-gradient(135deg, #B2E6D6 0%, #8CC7FF 100%)',
                     zIndex: 2,
+                    border: 'none',
+                    outline: 'none',
+                    boxShadow: 'none',
                 }}
             >
                 {/* White overlay for button content */}
                 <div className="absolute inset-0 bg-white/90 backdrop-blur-sm rounded-full" />
                 
                 {/* Button Content */}
-                <button
-                    type="button"
-                    onClick={onClick}
-                    className="relative z-10 text-gray-900 font-semibold text-lg flex items-center gap-2 transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
+                <div
+                    onClick={() => {
+                        triggerHapticFeedback();
+                        onClick();
+                    }}
+                    className="relative z-10 text-gray-900 font-semibold text-lg flex items-center gap-2 transition-all duration-200 hover:scale-105 cursor-pointer"
+                    style={{
+                        outline: 'none',
+                        border: 'none',
+                        boxShadow: 'none',
+                        background: 'transparent',
+                    }}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            triggerHapticFeedback();
+                            onClick();
+                        }
+                    }}
                     aria-label="Request a demo"
                 >
                     <span>{text}</span>
                     <span className="text-xl">{arrow}</span>
-                </button>
+                </div>
             </div>
         </div>
     );

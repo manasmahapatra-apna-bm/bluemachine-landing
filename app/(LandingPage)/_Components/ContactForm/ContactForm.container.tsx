@@ -339,6 +339,7 @@ export function ContactFormContainer(): React.ReactElement {
                 clearTimeout(resetTimeout);
             };
         }
+        return undefined;
     }, [isOpen]);
 
     return (
