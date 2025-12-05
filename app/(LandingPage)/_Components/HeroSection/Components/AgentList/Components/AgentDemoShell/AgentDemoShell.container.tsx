@@ -9,9 +9,11 @@ import type { AgentDemoMapping } from '../../Constants/AgentDemoMappings';
 
 interface AgentDemoShellContainerProps {
     agent: AgentDemoMapping & { resolvedThumbnailUrl?: string | null };
+    selectedAgentIndex: number;
+    totalAgents: number;
 }
 
-export function AgentDemoShellContainer({ agent }: AgentDemoShellContainerProps): React.ReactElement {
+export function AgentDemoShellContainer({ agent, selectedAgentIndex, totalAgents }: AgentDemoShellContainerProps): React.ReactElement {
     const [isPlaying, setIsPlaying] = useState<boolean>(false);
     const [isVideoLoaded, setIsVideoLoaded] = useState<boolean>(false);
     const { loadImage } = useImageLoader();
@@ -58,6 +60,8 @@ export function AgentDemoShellContainer({ agent }: AgentDemoShellContainerProps)
         <AgentDemoShellView
             agent={agent}
             thumbnailUrl={thumbnailUrl}
+            selectedAgentIndex={selectedAgentIndex}
+            totalAgents={totalAgents}
             isPlaying={isPlaying}
             isVideoLoaded={isVideoLoaded}
             onPlayClick={handlePlayClick}

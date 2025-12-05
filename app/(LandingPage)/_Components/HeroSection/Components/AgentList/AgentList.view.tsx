@@ -28,7 +28,7 @@ export function AgentListView({
                 selectedIndex={selectedAgentIndex}
                 onSelect={onAgentSelect}
             />
-            <AgentDemoShell agent={selectedAgent} />
+            <AgentDemoShell agent={selectedAgent} selectedAgentIndex={selectedAgentIndex} totalAgents={agents.length} />
         </div>
     );
 }
