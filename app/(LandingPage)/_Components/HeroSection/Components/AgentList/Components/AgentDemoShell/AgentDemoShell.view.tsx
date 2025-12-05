@@ -24,7 +24,7 @@ export function AgentDemoShellView({
 }: AgentDemoShellViewProps): React.ReactElement {
 
     return (
-        <div className="relative w-[calc(100%+1rem)] md:w-full md:max-w-4xl mx-auto -mx-2 md:mx-auto">
+        <div className="relative w-[calc(100%+1rem)] md:w-full md:max-w-4xl -mx-2 md:mx-auto">
             {/* Rotating Gradient Border Background - slightly larger than container */}
             <div
                 className="absolute rounded-xl md:rounded-2xl animate-gradient-rotate -top-[0.03125rem] -left-[0.03125rem] -right-[0.03125rem] -bottom-[0.03125rem] md:-top-[0.15625rem] md:-left-[0.15625rem] md:-right-[0.15625rem] md:-bottom-[0.15625rem]"
@@ -61,14 +61,6 @@ export function AgentDemoShellView({
                             }}
                         />
                     )}
-
-                    {/* White Gradient Overlay */}
-                    <div
-                        className="absolute inset-0 z-10"
-                        style={{
-                            background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.2) 100%)',
-                        }}
-                    />
 
                     {/* Video Element (loaded on demand, no preloading) */}
                     {isVideoLoaded && (

@@ -20,7 +20,7 @@ export function RequestDemoButtonView({ label, onClick }: RequestDemoButtonViewP
                 triggerHapticFeedback();
                 onClick();
             }}
-            className="px-6 py-3 rounded-full text-white font-medium text-base transition-all duration-200 hover:opacity-90 cursor-pointer"
+            className="inline-block px-6 py-3 rounded-full text-white font-medium text-base transition-all duration-200 hover:opacity-90 cursor-pointer"
             style={{
                 backgroundColor: '#0090FE',
                 outline: 'none',
